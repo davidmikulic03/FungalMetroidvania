@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1b21b3da649f04fb6d9ee5db9ef931, type: 3}
+  m_Name: PlayerController
+  m_EditorClassIdentifier: 
+  horizontalMovement:
+    m_Name: Horizontal Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a4972f3d-67e7-4924-811b-92a52d867749
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: Horizontal
+      m_Id: 7406f28d-bb88-46e5-991c-c1c116b8706c
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 791ca26f-6e91-42b1-9fe7-e85ea69d74ca
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: negative
+      m_Id: 34fe9f95-a774-4023-896c-49214156f25b
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: negative
+      m_Id: 8ce7a7da-277b-4cb2-ace2-030cb17108af
+      m_Path: <Joystick>/stick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: negative
+      m_Id: 0a474600-9133-44bb-8340-f7688b290b3d
+      m_Path: <Gamepad>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 6e55c239-f443-4fcd-96a3-cd30c7f37bde
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 6d90102f-12f6-4d43-a28a-253bfabb955e
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 34ace1a2-d580-413f-8c9e-edf7480f2f06
+      m_Path: <Joystick>/stick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: c673f5ea-3f06-4db7-aee7-7ce542823e01
+      m_Path: <Gamepad>/dpad/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 10b06746-e567-4bb6-b260-4267559dc840
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cc374474-ef9a-458e-bef3-f75de7cee398
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 491b8f26-892e-4882-84b0-dc2adc21befd
+      m_Path: <SwitchProControllerHID>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
