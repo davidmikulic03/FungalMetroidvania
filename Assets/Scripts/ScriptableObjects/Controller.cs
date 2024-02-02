@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class InputController : ScriptableObject
+public abstract class Controller : ScriptableObject
 {
     public abstract float HorizontalMoveInput();
     public abstract bool JumpInput();

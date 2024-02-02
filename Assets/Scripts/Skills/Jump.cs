@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Ground)), RequireComponent(typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
-    [SerializeField] private InputController input = null;
+    [SerializeField] private Controller input = null;
     [SerializeField] private JumpStats jumpStats = null;
 
     private Rigidbody2D body = null;
