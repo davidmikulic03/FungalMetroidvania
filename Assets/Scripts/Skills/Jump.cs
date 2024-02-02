@@ -72,7 +72,7 @@ public class Jump : MonoBehaviour
             bufferCounter = 0;
             coyoteCounter = 0;
 
-            float speed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpStats.jumpHeight);
+            float speed = Mathf.Sqrt(-2.1f * Physics2D.gravity.y * jumpStats.jumpHeight);
             velocity.y = speed;
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -11,16 +10,16 @@ public class Utility
     private AssetReferenceSprite _assetReferenceSprite;
     private AssetReferenceTexture2D _assetReferenceTexture2D;
 
-    public static T LoadAsync<T>(AssetReference asset) {
-        T result = default(T);
+    public static void LoadAsync<T>(AssetReference asset) {
         Addressables.LoadAssetAsync<T>(asset).Completed += (a) => {
-                if (a.Status == AsyncOperationStatus.Succeeded) {
-                    result = a.Result;
-                    Debug.Log("Successfully loaded asset " + result.ToString());
-                } else
-                    Debug.LogError("Failed to load asset " + asset);
-            }; return result;
+            if (a.Status == AsyncOperationStatus.Succeeded) {
+                T result = a.Result;
+                Debug.Log("Successfully loaded asset " + result.ToString());
+            } else
+                Debug.LogError("Failed to load asset " + asset);
+        };
     }
+
 
     public static GameObject LoadInstantiateAsync(AssetReferenceGameObject asset, Transform parent = null) {
         GameObject result = null;

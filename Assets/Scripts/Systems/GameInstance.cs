@@ -25,7 +25,7 @@ public class GameInstance : MonoBehaviour
     public enum GameState {
         NONE = 0,
         LOADING,
-        MAIN_MENU,
+        MAINMENU,
         SETTINGS,
         CREDITS,
         PLAYING,
@@ -43,18 +43,10 @@ public class GameInstance : MonoBehaviour
     }
     public void Initialize() {
         SetGameState(GameState.LOADING);
-        exampleAssetResource = Utility.LoadAsync<GameObject>(asset);
     }
-    private void Update()
-    {
-        Debug.Log(exampleAssetResource);
+    private void Update() {
         switch (gameState) {
-            case GameState.LOADING: {
-                    if(exampleAssetResource != null) {
-                        Instantiate(exampleAssetResource);
-                    } 
-                    break;
-                }
+
         }
     }
 

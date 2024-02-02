@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb3d78a7cdc96b46a7fa7c25817f90e, type: 3}
-  m_Name: PlayerJumpStats
+  m_Script: {fileID: 11500000, guid: e646e616e7006b541b9c48b7cbd7887c, type: 3}
+  m_Name: EnemiesBundle
   m_EditorClassIdentifier: 
-  jumpHeight: 3
-  fallSpeedMultiplier: 2.5
-  coyoteTime: 0.1
-  bufferTime: 0.1
+  entries:
+  - asset:
+      m_AssetGUID: 8db8688d60ca6374cbfbb8cdc5900424
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: Library
