@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asset:
-    m_AssetGUID: a825b2d04bb968a47ae8f3bb0b8c204a
+    m_AssetGUID: 8db8688d60ca6374cbfbb8cdc5900424
     m_SubObjectName: 
-    m_SubObjectType: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_EditorAssetChanged: 0

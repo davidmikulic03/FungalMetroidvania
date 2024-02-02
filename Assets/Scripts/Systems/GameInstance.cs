@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -32,9 +32,9 @@ public class GameInstance : MonoBehaviour
         PAUSE
     }
 
-    [SerializeField] AssetReferenceGameObject asset;
+    [SerializeField] AssetReference asset;
 
-    private GameObject exampleAssetResource;
+    private Task<GameObject> assetLoadTask;
 
     private static GameState gameState = GameState.NONE;
 
@@ -43,11 +43,10 @@ public class GameInstance : MonoBehaviour
     }
     public void Initialize() {
         SetGameState(GameState.LOADING);
+        assetLoadTask = Utility.LoadAsync<GameObject>(asset);
     }
-    private void Update() {
-        switch (gameState) {
+    private void FixedUpdate() {
 
-        }
     }
 
     public static GameState GetGameState() {

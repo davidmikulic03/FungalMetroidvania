@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -10,31 +12,28 @@ public class Utility
     private AssetReferenceSprite _assetReferenceSprite;
     private AssetReferenceTexture2D _assetReferenceTexture2D;
 
-    public static void LoadAsync<T>(AssetReference asset) {
-        Addressables.LoadAssetAsync<T>(asset).Completed += (a) => {
-            if (a.Status == AsyncOperationStatus.Succeeded) {
-                T result = a.Result;
-                Debug.Log("Successfully loaded asset " + result.ToString());
-            } else
-                Debug.LogError("Failed to load asset " + asset);
-        };
+    public static async Task<T> LoadAsync<T>(AssetReference asset) {
+        AsyncOperationHandle handle = Addressables.LoadAssetAsync<T>(asset);
+        await handle.Task;
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+            Debug.Log("Successfully loaded asset " + handle.Result);
+        else
+            Debug.LogError("Failed to load asset " + asset);
+
+        return (T)handle.Result;
+    }
+    public static async Task<GameObject> LoadAsync(AssetReferenceGameObject asset) {
+        AsyncOperationHandle handle = Addressables.LoadAssetAsync<GameObject>(asset);
+        await handle.Task;
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+            Debug.Log("Successfully loaded asset " + handle.Result);
+        else
+            Debug.LogError("Failed to load asset " + asset);
+
+        return (GameObject)handle.Result;
     }
 
 
-    public static GameObject LoadInstantiateAsync(AssetReferenceGameObject asset, Transform parent = null) {
-        GameObject result = null;
-        Addressables.InstantiateAsync(asset).Completed += (a) => {
-            if (a.Status == AsyncOperationStatus.Succeeded) {
-                result = a.Result;
-                Debug.Log("Successfully loaded and instantiated asset " + result.ToString());
-            }
-            else
-                Debug.LogError("Failed to load and instantiate asset " + asset);
-        };
-        if(result)
-            result.transform.parent = parent;
-        return result;
-    }
     public static void Unload(AssetReference asset) {
         Addressables.Release(asset);
     }
