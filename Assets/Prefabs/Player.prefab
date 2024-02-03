@@ -241,5 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317208a1cbcdea64b8dc1a2b13ca158f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: 8ee838448a679414aa643d551a2b004f, type: 3}
   input: {fileID: 11400000, guid: 27099690bf21d624c90e65b8b1b2713e, type: 2}
   jumpStats: {fileID: 11400000, guid: fd7bb057fb06a764da21aa3e2ddf3f7e, type: 2}

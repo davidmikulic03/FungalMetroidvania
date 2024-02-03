@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Ground)), RequireComponent(typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
+    [SerializeField] AudioClip jumpSound = null;
+
     [SerializeField] private Controller input = null;
     [SerializeField] private JumpStats jumpStats = null;
 
@@ -74,6 +76,8 @@ public class Jump : MonoBehaviour
 
             float speed = Mathf.Sqrt(-2.1f * Physics2D.gravity.y * jumpStats.jumpHeight);
             velocity.y = speed;
+
+            SoundManager.Instance.PlaySound(jumpSound, transform.position, 1, Random.Range(0.75f, 1.5f));
         }
     }
 }

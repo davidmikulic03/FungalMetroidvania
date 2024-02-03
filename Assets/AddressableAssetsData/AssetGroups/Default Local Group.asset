@@ -17,28 +17,39 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 59c45bbcaebfa3a41a0fe476665f530a
   m_SerializeEntries:
-  - m_GUID: 8db8688d60ca6374cbfbb8cdc5900424
-    m_Address: Assets/Prefabs/Library.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7bd499f84cf91de46934bcc623c2d348
     m_Address: Assets/Materials/Rendering/Trail.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a825b2d04bb968a47ae8f3bb0b8c204a
-    m_Address: Assets/Prefabs/Player.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f9a794cb4a1f8074db377b7e4408af3a
-    m_Address: Assets/Prefabs/Chimp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4239060f2d3c4484dae9253a8c4ab739
     m_Address: Assets/Sprites/CGI-Chimp-model-C4D-render-body-1.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40980301c65fc444094b8b5fccdf3eb6
+    m_Address: Assets/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a02ceabc24d21f940b58fd73a2509e13
+    m_Address: Assets/Audio Clips/Best Ostinato v3.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ee838448a679414aa643d551a2b004f
+    m_Address: Assets/Audio Clips/WalkSFX.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e88bdb7b77bc744686c320d4c9030a5
+    m_Address: Assets/Prefabs/Singletons
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Singleton
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17dbdcb65b7c6e44dad626d73948fac4
+    m_Address: Assets/Sound/Main.mixer
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

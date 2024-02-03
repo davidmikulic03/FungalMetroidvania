@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 
 namespace Initialization
@@ -11,17 +13,15 @@ namespace Initialization
         [RuntimeInitializeOnLoadMethod]
         public static void CreateGameInstance()
         {
-            var resource = Resources.Load<GameObject>("GameInstance");
+            var resource = Resources.Load<GameObject>("GameManager");
             var gameInstance = GameObject.Instantiate(resource);
-            gameInstance.name = "GameInstance";
-            var Comp = gameInstance.GetComponent<GameInstance>();
+            var Comp = gameInstance.GetComponent<GameManager>();
             Comp.Initialize();
         }
     }
 }
 
-public class GameInstance : MonoBehaviour
-{
+public class GameManager : PersistentSingleton<GameManager> {
     public enum GameState {
         NONE = 0,
         LOADING,
@@ -32,21 +32,17 @@ public class GameInstance : MonoBehaviour
         PAUSE
     }
 
-    [SerializeField] AssetReference asset;
+    [SerializeField] private AssetLabelReference singletons;
 
-    private Task<GameObject> assetLoadTask;
+    private GameObject audioManager;
 
     private static GameState gameState = GameState.NONE;
 
-    private void Awake() {
-        DontDestroyOnLoad(gameObject);
+    public async void Initialize() {
+        await Utility.LoadInstance(singletons);
     }
-    public void Initialize() {
-        SetGameState(GameState.LOADING);
-        assetLoadTask = Utility.LoadAsync<GameObject>(asset);
-    }
-    private void FixedUpdate() {
-
+    private void Update() {
+        
     }
 
     public static GameState GetGameState() {
