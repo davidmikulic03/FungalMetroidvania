@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using static Utility;
 
 [Serializable]
@@ -20,18 +22,39 @@ public class Utility
         NONE
     }
 
+    public static readonly Dictionary<string, AsyncOperationHandle> LoadedAssets = new Dictionary<string, AsyncOperationHandle>();
+    public static readonly Dictionary<string, AsyncOperationHandle> LoadingAssets = new Dictionary<string, AsyncOperationHandle>();
+
     private static long loadingQueue = 0;
     public static bool Loading { get { return loadingQueue > 0; } }
     public static long ItemsLoading { get { return loadingQueue; } }
 
 
-    private static async Task<T> Load<T>(string key, PrintMode printmode = PrintMode.ALL) where T : UnityEngine.Object {
+    public static async Task<T> Load<T>(string key, PrintMode printmode = PrintMode.ALL) where T : UnityEngine.Object {
         if (string.IsNullOrEmpty(key)) {
             if ((printmode == PrintMode.ALL || printmode == PrintMode.ERROR))
                 Debug.LogError("Could not load asset because key was null");
             return null;
         }
-        T obj = await Addressables.LoadAssetAsync<T>(key).Task;
+
+        AsyncOperationHandle<T> handle;
+        if (LoadedAssets.ContainsKey(key)) {
+            handle = LoadedAssets[key].Convert<T>();
+            return await handle.Task;
+        }
+        if (LoadingAssets.ContainsKey(key)) {
+            handle = LoadingAssets[key].Convert<T>();
+            return await handle.Task;
+        }
+
+        handle = Addressables.LoadAssetAsync<T>(key);
+        LoadingAssets.Add(key, handle);
+
+        T obj = await handle.Task;
+
+        LoadingAssets.Remove(key);
+        LoadedAssets.Add(key, handle);
+        Debug.Log(LoadedAssets.Count + " assets currently loaded into memory");
 
         if (obj != null && printmode == PrintMode.ALL)
             Debug.Log("Successfully loaded asset " + obj);
@@ -114,28 +137,30 @@ public class Utility
         await Addressables.DownloadDependenciesAsync(asset).Task;
     }
 
-    public static void Release<T>(T obj) where T : UnityEngine.Object {
-
+    public static void Release<T>(string key) where T : UnityEngine.Object {
+        if (IsLoaded(key)) {
+            Addressables.Release(LoadedAssets[key]);
+            LoadedAssets.Remove(key);
+            Debug.Log(LoadedAssets.Count + " assets currently loaded into memory");
+        } else if (IsLoading(key)) {
+            Addressables.Release(LoadingAssets[key]);
+            LoadingAssets.Remove(key);
+        }
+    }
+    public static void Release<T>(AssetReferenceT<T> assetReference) where T : UnityEngine.Object {
+        Release<T>(assetReference.AssetGUID);
     }
 
-
-    /*Addressables.InstantiateAsync(asset).Completed += handle => {
-        if(handle.Status == AsyncOperationStatus.Succeeded) {
-            GameObject.Instantiate((GameObject)asset.OperationHandle.Result);
-            Debug.Log("Successfully loaded and instantiated asset " + handle.Result);
-        } else {
-            Debug.LogError("Failed to load asset " + asset);
-        }
-    };*/
-
-    /*public static async Task<T> LoadAsync<T>(AssetReference asset) {
-        AsyncOperationHandle handle = Addressables.LoadAssetAsync<T>(asset);
-        await handle.Task;
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-            Debug.Log("Successfully loaded asset " + handle.Result);
-        else
-            Debug.LogError("Failed to load asset " + asset);
-
-        return (T)handle.Result;
-    }*/
+    public static bool IsLoaded(string key) {
+        return LoadedAssets.ContainsKey(key);
+    }
+    public static bool IsLoaded(AssetReference aRef) {
+        return LoadedAssets.ContainsKey(aRef.AssetGUID);
+    }
+    public static bool IsLoading(string key) {
+        return LoadingAssets.ContainsKey(key);
+    }
+    public static bool IsLoading(AssetReference aRef) {
+        return LoadingAssets.ContainsKey(aRef.AssetGUID);
+    }
 }

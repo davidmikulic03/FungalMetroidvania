@@ -32,14 +32,14 @@ public class GameManager : PersistentSingleton<GameManager> {
         PAUSE
     }
 
-    [SerializeField] private AssetLabelReference singletons;
+    [SerializeField] private GameObject soundManager;
 
     private GameObject audioManager;
 
     private static GameState gameState = GameState.NONE;
 
-    public async void Initialize() {
-        await Utility.LoadInstance(singletons);
+    public void Initialize() {
+        Instantiate(soundManager);
     }
     private void Update() {
         

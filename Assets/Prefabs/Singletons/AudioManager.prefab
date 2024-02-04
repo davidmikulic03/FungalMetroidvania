@@ -52,6 +52,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   maxSounds: 32
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1
 --- !u!1 &8355971894184403023
 GameObject:
   m_ObjectHideFlags: 0
