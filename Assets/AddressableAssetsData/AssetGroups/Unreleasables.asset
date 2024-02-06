@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Unreleasables
+  m_EditorClassIdentifier: 
+  m_GroupName: Unreleasables
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 6aa4f53f369a0bf41a814df9d63f1f37
+  m_SerializeEntries:
+  - m_GUID: 17dbdcb65b7c6e44dad626d73948fac4
+    m_Address: Assets/Sound/Main.mixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eae289a72a7c58f49b03a509a9743f1c
+    m_Address: Singletons/AudioManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 158337210837479439dc701e812c19c7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b4d23badb5ec9db438b2117dca1aca43, type: 2}
+    - {fileID: 11400000, guid: a37d5d0dc7ded4b4083f1fd9db841c89, type: 2}

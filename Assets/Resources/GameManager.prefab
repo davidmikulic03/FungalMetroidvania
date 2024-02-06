@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699b09a4f77b51d4cab90f888024751b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 4660288958987553146, guid: eae289a72a7c58f49b03a509a9743f1c, type: 3}
+  singletons:
+    m_LabelString: Singleton

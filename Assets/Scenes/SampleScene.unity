@@ -406,6 +406,12 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  big:
+    m_AssetGUID: 0fcf9d4745e377a46829f595dbd5d625
+    m_SubObjectName: Fjord
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
   fadeTime: 1
 --- !u!1 &519420028
 GameObject:

@@ -22,8 +22,8 @@ public class Utility
         NONE
     }
 
-    public static readonly Dictionary<string, AsyncOperationHandle> LoadedAssets = new Dictionary<string, AsyncOperationHandle>();
-    public static readonly Dictionary<string, AsyncOperationHandle> LoadingAssets = new Dictionary<string, AsyncOperationHandle>();
+    public static readonly Dictionary<object, AsyncOperationHandle> LoadedAssets = new Dictionary<object, AsyncOperationHandle>();
+    public static readonly Dictionary<object, AsyncOperationHandle> LoadingAssets = new Dictionary<object, AsyncOperationHandle>();
 
     private static long loadingQueue = 0;
     public static bool Loading { get { return loadingQueue > 0; } }
@@ -65,26 +65,7 @@ public class Utility
     public static async Task<T> Load<T>(AssetReferenceT<T> asset, PrintMode printmode = PrintMode.ALL) where T : UnityEngine.Object {
         return await Load<T>(asset.AssetGUID, printmode);
     }
-    public static async Task<List<T>> Load<T>(AssetLabelReference label, Action<T> callback = null) where T : UnityEngine.Object {
-        if (string.IsNullOrEmpty(label.labelString)) {
-            Debug.LogError("Could not load assets because label was null or empty");
-            return null;
-        }
-        List<T> output = await Addressables.LoadAssetsAsync<T>(label, callback).Task as List<T>;
-        long successCount = 0;
-        long failureCount = 0;
-        foreach (T obj in output) { 
-            if(obj != null)
-                successCount++;
-            else 
-                failureCount++;
-        }
-        if (successCount > 0)
-            Debug.Log("Successfully loaded " + successCount + " " + typeof(T).Name + "(s) from label " + label.labelString);
-        if (failureCount > 0)
-            Debug.LogError("Failed to load " + failureCount + " " + typeof(T).Name + "(s) from label " + label.labelString);
-        return output;
-    }
+    
 
 
     public static async Task<List<T>> LoadFromList<T>(AssetReferenceT<T>[] assets) where T : UnityEngine.Object {
@@ -107,30 +88,6 @@ public class Utility
         if (failureCount > 0)
             Debug.LogError("Failed to load " + failureCount + typeof(T).Name + "(s)");
         return output;
-    }
-
-
-    public static async Task<GameObject> LoadInstance(AssetReferenceGameObject prefab, PrintMode printmode = PrintMode.ALL) {
-        if (string.IsNullOrEmpty(prefab.AssetGUID)) {
-            if ((printmode == PrintMode.ALL || printmode == PrintMode.ERROR))
-                Debug.LogError("Could not load asset because reference was null");
-            return null;
-        }
-        GameObject obj = await Addressables.InstantiateAsync(prefab).Task;
-
-        if (obj != null && printmode == PrintMode.ALL)
-            Debug.Log("Successfully loaded and instantiated asset " + obj);
-        else if (obj == null && (printmode == PrintMode.ALL || printmode == PrintMode.ERROR))
-            Debug.LogWarning(prefab + " loaded as null");
-        return obj;
-    }
-    public static async Task<List<GameObject>> LoadInstance(AssetLabelReference label, Action<GameObject> callback = null) {
-        List<GameObject> results = await Load<GameObject>(label, callback);
-        for (int i = 0; i < results.Count; i++) {
-            if (results[i])
-                results[i] = GameObject.Instantiate(results[i]);
-        }
-        return results;
     }
 
     public static async Task DownloadDependencies(AssetReference asset) {

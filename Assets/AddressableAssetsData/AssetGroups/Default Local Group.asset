@@ -22,33 +22,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4239060f2d3c4484dae9253a8c4ab739
-    m_Address: Assets/Sprites/CGI-Chimp-model-C4D-render-body-1.jpg
+  - m_GUID: 0fcf9d4745e377a46829f595dbd5d625
+    m_Address: Assets/Sprites/Fjord.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40980301c65fc444094b8b5fccdf3eb6
     m_Address: Assets/Prefabs
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a02ceabc24d21f940b58fd73a2509e13
-    m_Address: Assets/Audio Clips/Best Ostinato v3.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8ee838448a679414aa643d551a2b004f
-    m_Address: Assets/Audio Clips/WalkSFX.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 17dbdcb65b7c6e44dad626d73948fac4
-    m_Address: Assets/Sound/Main.mixer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0b582a13a2ee2ee438b47336e8ca449c
-    m_Address: Assets/Sound/Clips/Chordioids v4.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
