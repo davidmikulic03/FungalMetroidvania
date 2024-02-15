@@ -36,7 +36,7 @@ public class GameManager : PersistentSingleton<GameManager> {
 
     public async void Initialize() {
 
-        GameObject soundManager = await Utility.Load<GameObject>("Singletons/AudioManager");
+        GameObject soundManager = await AssetManager.Load<GameObject>("Singletons/AudioManager");
 
         if(soundManager)
             Instantiate(soundManager);

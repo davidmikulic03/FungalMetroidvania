@@ -31,7 +31,7 @@ public class SoundManager : PersistentSingleton<SoundManager> {
 
         if (initialized) return;
 
-        audioMixer = await Utility.Load(mixer);
+        audioMixer = await AssetManager.Load(mixer);
         musicSource = transform.Find("Music").GetComponent<AudioSource>();
         Transform SFXParent = transform.Find("SFX");
 
@@ -65,7 +65,7 @@ public class SoundManager : PersistentSingleton<SoundManager> {
             return;
 
         bool isPlaying = IsTrackPlaying && musicSource.clip;
-        Task<AudioClip> trackLoadTask = Utility.Load(trackReference, Utility.PrintMode.ERROR);
+        Task<AudioClip> trackLoadTask = AssetManager.Load(trackReference, AssetManager.PrintMode.ERROR);
         Task fadeOutTask = FadeOut(fadeTime);
         if (isPlaying)
             await Task.WhenAll(fadeOutTask, trackLoadTask);
@@ -83,7 +83,7 @@ public class SoundManager : PersistentSingleton<SoundManager> {
             return;
         } else {
             if(currentSoundTrackRef != null && currentSoundTrackRef != trackReference)
-                Utility.Release(currentSoundTrackRef);
+                AssetManager.Release(currentSoundTrackRef);
             musicSource.clip = trackLoadTask.Result;
             currentSoundTrackRef = trackReference;
             if (trackTimePairs.ContainsKey(currentSoundTrackRef))

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using static Utility;
+using static AssetManager;
 
 [Serializable]
 public class AssetReferenceAudioClip : AssetReferenceT<AudioClip> {
@@ -14,7 +14,7 @@ public class AssetReferenceAudioClip : AssetReferenceT<AudioClip> {
     }
 }
 
-public class Utility
+public class AssetManager
 {
     public enum PrintMode {
         ALL = 0,

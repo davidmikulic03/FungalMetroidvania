@@ -18,7 +18,7 @@ public class SwapMusicOnEnter : MonoBehaviour
         if (SoundManager.Instance)
             SoundManager.Instance.SwapTrack(track1, fadeTime / 2);
 
-        sprite = await Utility.Load(big);
+        sprite = await AssetManager.Load(big);
 
         obj = new GameObject(sprite.name);
         obj.AddComponent<SpriteRenderer>().sprite = sprite;
@@ -28,6 +28,6 @@ public class SwapMusicOnEnter : MonoBehaviour
             SoundManager.Instance.SwapTrack(track2, fadeTime / 2);
 
         Destroy(obj);
-        Utility.Release(big);
+        AssetManager.Release(big);
     }
 }
